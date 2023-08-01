@@ -77,4 +77,5 @@ const soma = array.reduce((acc, item) => {
     return acc + item 
 }, 0)
 
+
 document.body.innerText = JSON.stringify(soma)
