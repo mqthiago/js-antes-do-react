@@ -71,11 +71,36 @@ function mostraIdade ({idade}){
 
 // map, filter, every, some, find, findIndex, reduce. 
 
-const array = [1, 2, 3, 4, 5]
+// Promises
 
-const soma = array.reduce((acc, item) => {
-    return acc + item 
-}, 0)
+// .then/.catch
 
+// fetch('https://api.github.com/users/mqthiago')
+// .then(response => {
+//     return response.json()
+// })
+// .then(body => {
+//     console.log(body)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+// .finally(() => {
+//     console.log('deu')
+// })
 
-document.body.innerText = JSON.stringify(soma)
+async function buscaDadosNoGithub() { 
+    try {
+        const response = await fetch('https://api.github.com/users/mqthiago')
+        const body = await response.json()
+
+        return body.name
+    } catch (err) {
+        console.log(err)
+    } finally{
+        console.log('deu')
+    }
+}
+buscaDadosNoGithub().then(name => {
+    console.log(name)
+})
